@@ -32,6 +32,9 @@ class Enemy{
 
     update(dt){
         this.x = this.x+dt;
+        if(this.x > 5){
+            this.x = -2;
+        }
 
     }
 
