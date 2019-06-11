@@ -31,18 +31,27 @@ class Enemy{
     }
 
     update(dt){
-        this.x = this.x+dt;
-        if(this.x > 5){
-            this.x = -2;
+        this.x = this.x+dt*100;
+        if(this.x > 500){
+            this.x = -200;
         }
-
+        checkCollision()
     }
 
     render(){
-        ctx.drawImage(Resources.get(this.sprite), this.x*100, this.y*50);
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
 
 }
+function checkCollision(){
+    for(enemy of allEnemies){
+        if(enemy.x == player.x && enemy.y == player.y){
+            player.x = 2;
+            player.y = 5;
+        }
+    }
+}
+
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
@@ -50,33 +59,37 @@ class Enemy{
 class Player{
     constructor(){
         this.sprite = 'images/char-boy.png';
-        this.x = 2;
-        this.y = 5;
+        this.x = 200;
+        this.y = 400;
     }
     update(dt){
 
     }
     render(){
-        ctx.drawImage(Resources.get(this.sprite), this.x*100, this.y*85);
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
     handleInput(dir){
         if (dir == 'left'){
             if (this.x > 0)
-                this.x -= 1;
+                this.x -= 100;
         }
         else if (dir == 'up'){
-            if (this.y > -1)
-                this.y -= 1;
+            if (this.y > -100)
+                this.y -= 100;
         }
         else if (dir == 'right'){
-            if(this.x<4)
-                this.x += 1;
+            if(this.x<400)
+                this.x += 100;
         }
         else{
-            if(this.y<5)
-                this.y += 1;
+            if(this.y<300)
+                this.y += 100;
         }
-        
+        if(this.y == -100){
+            this.x=200;
+            this.y=400;
+            alert("You won!!!!");
+        }
     }
 }
 
@@ -86,13 +99,13 @@ class Player{
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-let enemy1 = new Enemy(-1, 1);
-let enemy2 = new Enemy(-2, 3);
-let enemy3 = new Enemy(-3, 4.5);
-let enemy4 = new Enemy(-4, 1);
-let enemy5 = new Enemy(-5, 4.5)
+let enemy1 = new Enemy(0, 50);
+let enemy2 = new Enemy(-200, 130);
+let enemy3 = new Enemy(-300, 225);
+let enemy4 = new Enemy(-400, 50);
+let enemy5 = new Enemy(-500, 225);
 
-let allEnemies = [enemy1, enemy2, enemy3, enemy4,enemy5]
+let allEnemies = [enemy1,enemy2,enemy3,enemy4,enemy5]
 
 let player = new Player();
 
