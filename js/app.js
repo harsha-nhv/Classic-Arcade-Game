@@ -43,12 +43,38 @@ class Enemy{
     }
 
 }
+
 function checkCollision(){
+    let collide = 0;
     for(enemy of allEnemies){
         if(enemy.x == player.x && enemy.y == player.y){
-            player.x = 2;
-            player.y = 5;
+            player.x = 200;
+            player.y = 400;
         }
+        else if((enemy.x-40) <= player.x &&
+        player.x <= (enemy.x+40) &&(enemy.y-40) <= player.y && 
+        player.y <= (enemy.y+40)){                
+                
+                collide = 1;
+                break;
+        }
+    }
+    if(collide == 1){
+        ctx.drawImage(Resources.get(player.sprite), player.x, player.y);
+        setTimeout(function(){alert("You have lost!!!");},100);
+        enemy1.x = 0;
+        enemy1.y = 50;
+        enemy2.x = -200;
+        enemy2.y = 130;
+        enemy3.x = -300;
+        enemy3.y = 225;
+        enemy4.x = -400;
+        enemy4.y = 50;
+        enemy5.x = -500;
+        enemy5.y = 225;
+
+        player.x = 200;
+        player.y = 400;
     }
 }
 
@@ -82,13 +108,13 @@ class Player{
                 this.x += 100;
         }
         else{
-            if(this.y<300)
+            if(this.y<400)
                 this.y += 100;
         }
         if(this.y == -100){
             this.x=200;
             this.y=400;
-            alert("You won!!!!");
+            setTimeout(function(){alert("You won!!!!");},100);
         }
     }
 }
