@@ -52,8 +52,8 @@ function checkCollision(){
             player.y = 400;
         }
         else if((enemy.x-40) <= player.x &&
-        player.x <= (enemy.x+40) &&(enemy.y-40) <= player.y && 
-        player.y <= (enemy.y+40)){                
+        player.x <= (enemy.x+40) &&(enemy.y-50) <= player.y && 
+        player.y <= (enemy.y+45)){                
                 
                 collide = 1;
                 break;
@@ -61,7 +61,8 @@ function checkCollision(){
     }
     if(collide == 1){
         ctx.drawImage(Resources.get(player.sprite), player.x, player.y);
-        setTimeout(function(){alert("You have lost!!!");},100);
+        //setTimeout(function(){alert("You have lost!!!");},100);
+        loseCondition();
         enemy1.x = 0;
         enemy1.y = 50;
         enemy2.x = -200;
@@ -114,11 +115,47 @@ class Player{
         if(this.y == -100){
             this.x=200;
             this.y=400;
-            setTimeout(function(){alert("You won!!!!");},100);
+            //setTimeout(function(){alert("You won!!!!");},100);
+            winCondition()
         }
     }
 }
 
+let myModal = document.getElementById('myModal');
+let span = document.getElementsByClassName('close')[0];
+let para = document.getElementsByTagName('p')[0];
+
+function winCondition(){
+    
+    para.textContent = "Congratulations......You won!!!!!!!!!!";
+    myModal.style.display = "block";
+
+    span.onclick = function(){
+        myModal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == myModal) {
+          myModal.style.display = "none";
+        }
+    }
+
+}
+
+function loseCondition(){
+    para.textContent = "Sorry......You lost !!!!!!!!!!";
+    myModal.style.display = "block";
+
+    span.onclick = function(){
+        myModal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == myModal) {
+          myModal.style.display = "none";
+        }
+    }
+}
 
 
 // Now instantiate your objects.
