@@ -1,20 +1,17 @@
 # Classic Arcade Game Clone Project
 
-## Table of Contents
-
-- [Instructions](#instructions)
-- [Contributing](#contributing)
-
 ## Instructions
 
-Use this [rubric](https://review.udacity.com/#!/rubrics/15/view) for self-checking your submission.
+#### How to play the game
 
-Make sure the functions you write are **object-oriented** - either class functions (like `Player` and `Enemy`) or class prototype functions such as `Enemy.prototype.checkCollisions`. Also make sure that the keyword `this` is used appropriately within your class and class prototype functions to refer to the object the function is called upon.
+Initially, the game loads with the player on the grass tiles. The goal of the game is to reach the water tiles
+without hitting the bugs.
 
-Your **README.md** file should be updated with instructions on both how to 1. Run and 2. Play your arcade game.
+The Player can move up, down, left and right with the help of the arrow keys within the board.
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+If the player comes in contact with the bug, the game gets reloaded and the player has to start from the first.
+A popup window is opened whenever the player loses.
 
-## Contributing
+If the player successfully makes to the water by avoiding the bugs, he has won the game and popup window is opened with greeting the player. The game is reloaded after closing the window and continues.
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+The Player and Enemy classes are implemented in the app.js file using ES6.
