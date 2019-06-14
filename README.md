@@ -4,6 +4,8 @@
 
 #### How to play the game
 
+Inorder to start the game open the index.html page in any web browser of your choice, you can also double the click the file index.html which opens the game window on your default browser.
+
 Initially, the game loads with the player on the grass tiles. The goal of the game is to reach the water tiles
 without hitting the bugs.
 
