@@ -35,7 +35,7 @@ class Enemy{
         if(this.x > 500){
             this.x = -200;
         }
-        checkCollision()
+        // checkCollision()
     }
 
     render(){
@@ -90,6 +90,7 @@ class Player{
         this.y = 400;
     }
     update(dt){
+        checkCollision()
 
     }
     render(){
